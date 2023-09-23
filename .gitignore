@@ -14,7 +14,9 @@
 #
 # Feel free to modify and expand upon this template as needed for your projects.
 ###################################################
+# Latest update: 2023 Sep 19 
 
+# ————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 # gitignore一定要在上传GitHub之前设置好，要不然很多文件都会保留在git中
 
 # 排除历史文件夹
@@ -30,8 +32,34 @@
 # 在你的项目根目录下找到 .gitignore 文件，如果没有则创建一个。在该文件中添加以下内容：
 # .DS_Store
 # 这样配置后，Git 将自动忽略 .DS_Store 文件，不再将其包含在版本控制中。
-# 2023 Aug 更新
 .DS_Store
+
+# ————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+# 这是使用react时react自己生成的原生模板 
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # ————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 # 以下是Github上的gitignore - Node模版。包含.env node_modules 等等 
@@ -167,7 +195,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# —————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+# ————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 # 以下是Java的一个模版 A complete .gitignore file for Java. 
 
 ##############################
@@ -175,7 +203,7 @@ dist
 ##############################
 .mtj.tmp/
 *.class
-# *.jar
+*.jar
 *.war
 *.ear
 *.nar

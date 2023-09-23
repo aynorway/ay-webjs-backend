@@ -1,41 +1,105 @@
+[☞ English (英文)](README.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[☞ Chinese (中文)]()
 
-<!-- README.md -->
-# AYWEBJS 项目文件说明
-本项目主要由以下文件构成：
+# Backend for AYWEBJS 
 
-## 1. .env
-这是一个环境变量配置文件，其中包含了数据库配置和 JWT 的秘钥等敏感信息。
-## 2. config/db.config.js
-此文件是数据库配置文件，其中的配置信息从 .env 文件中获取。
-## 3. config/jwt.config.js
-此文件是 JWT（Json Web Token）的配置文件，其中的配置信息从 .env 文件中获取。
-## 4. utils/db.utils.js
-此文件用于创建和管理 MySQL 数据库的连接池。
-## 5. routes/user.routes.js
-这是用户相关路由的配置文件，包含用户注册和登录的路由。
-## 6. routes/article.routes.js
-这是文章相关路由的配置文件，包含获取文章的路由。
-## 7. models/user.model.js
-这是用户模型文件，包含与用户相关的数据库操作，如创建新用户和通过用户名获取用户。
-## 8. models/article.model.js
-这是文章模型文件，包含与文章相关的数据库操作，如根据用户级别获取文章。
-## 9. handlers/user.handler.js
-这是用户处理器文件，其中包含处理用户注册和登录请求的函数。
-## 10. handlers/article.handler.js
-这是文章处理器文件，其中包含处理获取文章请求的函数。
-## 11. middlewares/verifyToken.js
-这是一个中间件文件，其中包含一个函数用于验证请求中的 JWT token。
-## 12. server.js
-这是项目的入口文件，它设置了 Express 应用、数据库连接测试、CORS 和 Body Parser 的使用，以及用户和文章路由的使用。此文件也负责启动服务器。
-## 13 scripts/userManagement.js
-用来插入新用户和修改用户级别。
-## 14 models/category.model.js
-文件包含与Category表相关的数据库操作代码。
-## 15 handlers/category.handler.js
-这个文件会处理与Category相关的HTTP请求并返回响应。
-## 16 routes/category.routes.js
-这个文件会配置与Category相关的路由。
+AYWEBJS is a full-stack website constructed using React, Node.js, and MySQL. The platform showcases a range of articles and tailors content accessibility based on user privileges. The interface features a left-side navigation bar that follows a predetermined folder structure, listing both site navigation options and article locations.
 
+## Features
 
-## 其他
-- package.json: 这个文件包含了项目的 npm 配置，包括项目的依赖和脚本等。
+- **Separation of Concerns**: The division between routes and handlers modularizes the code, enhancing its readability and maintainability.
+  
+- **User Permission Management**: JWT (Json Web Token) is employed for user authentication. This ensures articles are displayed based on varying user privileges.
+  
+- **Modular Architecture**: Adherence to modular design principles guarantees each component’s functionality is transparent, testable, and reusable.
+
+## Database Structure
+
+### User Table
+
+Records user-specific details including username, password hash, salt, access level, first and last name, and registration date.
+
+### Category Table
+
+Archives information related to article categories. Note: A category can have a parent category.
+
+### Article Table
+
+Contains article data such as title, category, required access level, tags, publication date, last edited date, author, and content.
+
+## Project Structure
+
+```
+aywebjs/
+│
+├── README.md
+├── .env                      // Environment configuration file containing sensitive data
+│
+├── config
+│   ├── db.config.js          // Database configuration sourced from .env
+│   └── jwt.config.js         // JWT configuration sourced from .env
+│
+├── handlers
+│   ├── article.handler.js    // Functions handling article retrieval requests
+│   ├── category.handler.js   // Functions managing HTTP requests related to Category
+│   └── user.handler.js       // Functions processing user registration and login requests
+│
+├── middlewares
+│   └── verifyToken.js        // Middleware function verifying JWT tokens in requests
+│
+├── models
+│   ├── article.model.js      // Database operations associated with articles, e.g., retrieval by user level
+│   ├── category.model.js     // Database operations related to the Category table
+│   └── user.model.js         // User model operations like new user creation and retrieval by username
+│
+├── routes
+│   ├── article.routes.js     // Configuration for routes related to articles, e.g., article retrieval
+│   ├── category.routes.js    // Configuration for routes related to Category
+│   └── user.routes.js        // Configuration for user-centric routes, e.g., registration and login
+│
+├── scripts
+│   └── userManagement.js     // Script to insert new users and modify user levels
+│
+├── server.js                 // Project's entry point that sets up the Express app, DB connections, CORS, Body Parser, and routes. Also initiates the server.
+│
+└── utils
+    └── db.utils.js           // Management of MySQL database connection pool
+```
+
+## Quick Start
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/aynorway/aywebjs.git
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   cd aywebjs
+   npm install
+   ```
+
+3. **Set up environment variables**:
+
+   Populate the `.env` file with database and JWT keys.
+
+4. **Kickstart the server**:
+
+   ```bash
+   npm start
+   ```
+
+   The server will be up and running at [http://localhost:3000](http://localhost:3000).
+
+## Miscellaneous
+
+- **package.json**: This file contains the project's npm configuration, detailing dependencies, scripts, and more.
+
+## Contributing
+
+I appreciate contributions! Feel free to raise issues or submit pull requests.
+
+## License
+
+AYWEBJS is licensed under the MIT License.
