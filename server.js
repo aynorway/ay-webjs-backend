@@ -1,6 +1,9 @@
 // # 12 最后，我们将更新server.js文件，以使用新创建的模块。
 
 
+
+// 这是我的server.js文件 
+
 // server.js
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,6 +14,8 @@ const userRoutes = require('./routes/user.routes');
 const articleRoutes = require('./routes/article.routes');
 const categoryRoutes = require('./routes/category.routes');
 // const verifyToken = require('./middlewares/verifyToken');
+const stockRoutes = require('./routes/stock.routes'); // 新增股票路由引入
+
 
 // 创建 Express 应用
 const app = express();
@@ -22,7 +27,7 @@ db.getConnection((err, connection) => {
   if (err) {
     console.error('Database connection failed:', err.message);
   } else {
-    console.log('Database connection successful!');
+    console.log('Database 数据库OK connection successful!');
     connection.release();
   }
 });
@@ -31,17 +36,20 @@ db.getConnection((err, connection) => {
 app.use(cors());
 app.use(bodyParser.json());
 
-// 使用用户路由和文章路由 （这里有顺序影响）
+// 使用用户路由和文章路由 （这里有顺序影响）!!!!!!!!!!!!!!!!!
 // app.use(verifyToken); // 在这里是全局使用验证中间件
 app.use(userRoutes);
 app.use(articleRoutes);
 app.use(categoryRoutes);
+app.use('/stocks', stockRoutes); // 添加股票路由并指定前缀
 
 
 // 启动服务器
 app.listen(3000, () => {
-  console.log('AYWEBJS Server is running at http://localhost:3000');
+  console.log('AYWEBJS 后台Server is running at http://localhost:3000');
 });
+
+
 
 
 
